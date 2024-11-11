@@ -13,8 +13,7 @@ export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGateway
                 const challenge = queryParams['hub.challenge'];
 
                 // check the mode and token sent are correct
-                const verifyToken = 'AIF_VERIFY_TOKEN';
-                if (mode === 'subscribe' && token === verifyToken) {
+                if (mode === 'subscribe' && token === process.env.VERIFY_TOKEN) {
                     console.log('Webhook verified successfully! 🎉');
                     return {
                         statusCode: 200,
